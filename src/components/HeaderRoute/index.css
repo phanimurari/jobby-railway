@@ -1,0 +1,22 @@
+.Header-List {
+  background-color: #272727;
+  width: 100vw;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 80px;
+}
+
+.unOrderedList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.Home {
+  font-family: Roboto;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
