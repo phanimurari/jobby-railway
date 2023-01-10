@@ -4,6 +4,8 @@ import {Redirect} from 'react-router-dom'
 
 import './index.css'
 
+import userDetails from '../../common/constants.json'
+
 class Login extends Component {
   state = {
     username: '',
@@ -27,14 +29,49 @@ class Login extends Component {
   OnSubmitSuccess = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const UserDetails = {username, password}
-    const apiUrl = 'https://apis.ccbp.in/login'
+    const UserDetails = {
+      name: 'raefweqwul',
+      username: 'raerewwererw4rrryhutyl123',
+      password: 'rahulog456',
+      gender: 'Male',
+      location: 'hyderabad',
+    }
+
+    console.log(UserDetails)
+
+    const apiUrl = 'https://node-app-production-95b9.up.railway.app/users'
     const options = {
       method: 'POST',
-      body: JSON.stringify(UserDetails),
+      body: UserDetails,
+      ContentType: 'application/json',
     }
-    const response = await fetch(apiUrl, options)
+
+    // console.log('response')
+
+    // // fetch('/api/v1/users', {
+    // //   method: 'post',
+    // //   headers: {'Content-Type': 'application/json'},
+    // //   body: JSON.stringify({
+    // //     user: {
+    // //       email: email,
+    // //       password: password,
+    // //     },
+    // //   }),
+    // // })
+
+    const response = await fetch(apiUrl, {
+      mode: 'no-cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(UserDetails),
+    })
+
     const data = await response.json()
+
+    console.log(response)
+
     if (response.ok === true) {
       this.onSuccessSubmit(data.jwt_token)
     }
